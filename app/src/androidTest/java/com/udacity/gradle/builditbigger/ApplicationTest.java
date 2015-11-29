@@ -1,4 +1,4 @@
-package net.vectortime.p4_builditbigger;
+package com.udacity.gradle.builditbigger;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
