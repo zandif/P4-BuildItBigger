@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+
+import com.udacity.gradle.builditbigger.async.EndpointsAsyncTask;
 
 import com.udacity.gradle.jokes.JokeProvider;
 
@@ -14,11 +15,14 @@ import net.vectortime.jokedisplay.JokeActivity;
 
 
 public class MainActivity extends ActionBarActivity {
+    private EndpointsAsyncTask mAsyncTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mAsyncTask = new EndpointsAsyncTask();
     }
 
 
@@ -53,5 +57,9 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(this, JokeActivity.class);
         intent.putExtra(JokeActivity.JOKE_KEY, joke);
         startActivity(intent);
+    }
+
+    public void tellJokeAsync(View view) {
+        mAsyncTask.execute();
     }
 }

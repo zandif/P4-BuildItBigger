@@ -6,3 +6,9 @@
 .DS_Store
 /build
 /captures
+/jokesbackend/build
+/jokesbackend/captures
+/jokesbackend/.idea/libraries
+/jokesbackend/.idea/workspace.xml
+/jokesbackend/.gradle
+/jokesbackend/.DS_Store

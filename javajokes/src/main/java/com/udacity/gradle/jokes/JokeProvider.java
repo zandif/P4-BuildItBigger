@@ -15,7 +15,8 @@ public class JokeProvider {
             "Helium walks into a bar and orders a beer.  The bartender says \"We don't server " +
                     "noble gases here.\" Helium doesn't react.",
             "A Higgs Boson walks into a church and the priest says \"We don't allow Higgs Bosons " +
-                    "in here.\" The Higgs Boson replies, \"But without me how could have mass?\"",
+                    "in here.\" The Higgs Boson replies, \"But without me how could you have " +
+                    "mass?\"",
             "Why can't chemists prank their friends?\nThey lack the element of surprise!",
             "Sodium sodium sodium sodium sodium sodium sodium sodium Batman!",
             "Have you heard the one about the sick chemist?\nIf you can't helium, and you can't " +
@@ -24,7 +25,7 @@ public class JokeProvider {
             "A neutron walks into a bar and asks the bartender how much for a drink.\nThe " +
                     "bartender says \"For you, no charge.\"",
             "What does a subatomic duck say?\nQuark!",
-            "What doe physicists enjoy doing the most at sporting events?\nThe wave.",
+            "What do physicists enjoy doing the most at sporting events?\nThe wave.",
             "Does a radioactive cat have 18 half-lives?",
             "How many programmers does it take to change a light bulb?\nCan't be done sorry, it's" +
                     " a hardware problem.",
