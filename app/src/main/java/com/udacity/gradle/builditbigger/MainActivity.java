@@ -1,22 +1,23 @@
 package com.udacity.gradle.builditbigger;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.udacity.gradle.builditbigger.async.AsyncJoke;
-
-
+import com.udacity.gradle.builditbigger.interfaces.JokeCallback;
 import com.udacity.gradle.jokes.JokeProvider;
 
 import net.vectortime.jokedisplay.JokeActivity;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements JokeCallback{
     private AsyncJoke mAsyncJoke;
 
     @Override
@@ -64,6 +65,34 @@ public class MainActivity extends ActionBarActivity {
     public void tellJokeAsync(View view) {
         ProgressBar spinner = (ProgressBar) findViewById(R.id.loadingSpinner);
         spinner.setVisibility(View.VISIBLE);
-        mAsyncJoke.tellJoke(view);
+
+        Button button = (Button) findViewById(R.id.tellJokeButton);
+        if (button != null) { button.setEnabled(false); }
+
+        mAsyncJoke.tellJoke(this);
+    }
+
+    @Override
+    public void showErrorMessage(String error) {
+        Toast.makeText(this, error, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void launchJokeIntent(String joke) {
+        // Stop the progress spinner
+        ProgressBar spinner = (ProgressBar) findViewById(R.id.loadingSpinner);
+        if (spinner != null) {
+            spinner.setVisibility(View.GONE);
+        }
+
+        // Re-enable the button
+        Button button = (Button) findViewById(R.id.tellJokeButton);
+        if (button != null) {
+            button.setEnabled(true);
+        }
+
+        Intent intent = new Intent(this, JokeActivity.class);
+        intent.putExtra(JokeActivity.JOKE_KEY, joke);
+        startActivity(intent);
     }
 }

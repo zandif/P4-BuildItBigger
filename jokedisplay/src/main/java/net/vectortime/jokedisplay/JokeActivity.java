@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import com.udacity.gradle.jokes.JokeProvider;
 
@@ -47,8 +48,11 @@ public class JokeActivity extends AppCompatActivity {
 //                .commit();
 
 
-        Intent intent = new Intent(this, JokeActivity.class);
-        intent.putExtra(JokeActivity.JOKE_KEY, joke);
-        startActivity(intent);
+//        Intent intent = new Intent(this, JokeActivity.class);
+//        intent.putExtra(JokeActivity.JOKE_KEY, joke);
+//        startActivity(intent);
+
+        TextView textView = (TextView) findViewById(R.id.newJokeTextView);
+        textView.setText(joke);
     }
 }
