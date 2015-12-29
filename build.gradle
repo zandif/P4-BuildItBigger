@@ -19,3 +19,29 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+// http://stackoverflow.com/questions/31434928/android-gradle-task-google-appengine
+task runAppEngine (dependsOn: ":jokesbackend:appengineRun") {
+    project(":jokesbackend").afterEvaluate { backend ->
+        backend.extensions.appengine.daemon = true
+    }
+    doLast {
+        println "started the server!"
+    }
+
+}
+
+// connectedAndroidTest - The task that runs the android tests on connected devices.
+// http://tools.android.com/tech-docs/new-build-system/user-guide
+task runTests (type: GradleBuild){
+    dependsOn "runAppEngine"
+    tasks = [':app:connectedAndroidTest']
+}
+
+task runTestSuite(type: GradleBuild){
+    description "Run this task to 1) Launches the GCE local development server  2) Runs all tests" +
+            "  3) Shuts the server down again"
+
+    dependsOn "runTests"
+    tasks = [':jokesbackend:appengineStop']
+}
